@@ -1,0 +1,97 @@
+#N canvas 0 23 780 489 10;
+#X obj 348 195 *~;
+#X obj 348 364 outlet~;
+#X obj 111 125 hsl 128 15 0 127 0 1 \$0-mixer2-channel1-s \$0-mixer2-channel1-r
+CH1 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
+#X obj 363 129 / 127;
+#X obj 363 151 pack 0 50;
+#X obj 363 173 line~;
+#X obj 444 80 inlet~;
+#X obj 444 191 *~;
+#X obj 459 125 / 127;
+#X obj 459 147 pack 0 50;
+#X obj 459 169 line~;
+#X obj 111 140 hsl 128 15 0 127 0 1 \$0-mixer2-channel2-s \$0-mixer2-channel2-r
+CH2 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
+#X obj 170 113 cnv 5 5 5 empty empty MIXER 0 0 0 12 #fcfcfc #404040
+0;
+#X obj 249 166 cnv 5 5 5 empty empty UNITY 0 0 0 8 #fcfcfc #404040
+0;
+#X obj 256 111 cnv 5 5 5 empty empty CH2 0 0 0 8 #fcfcfc #404040 0
+;
+#X obj 103 111 cnv 5 5 5 empty empty CH1 0 0 0 8 #fcfcfc #404040 0
+;
+#X obj 216 113 cnv 5 5 5 empty \$0-instance-num 0 0 0 0 12 #fcfcfc
+#404040 0;
+#X obj 348 332 *~ 0.5;
+#X obj 517 348 outlet~;
+#X obj 103 166 cnv 5 5 5 empty empty OUT 0 0 0 8 #fcfcfc #404040 0
+;
+#N canvas 89 43 437 251 save-state 0;
+#X obj 224 71 f;
+#X obj 224 114 pack f f;
+#X obj 247 47 r \$0-mixer2-channel2-s;
+#X obj 239 23 r \$0-mixer2-channel1-s;
+#X obj 115 168 unpack f f;
+#X obj 172 189 s \$0-mixer2-channel2-r;
+#X obj 115 212 s \$0-mixer2-channel1-r;
+#X obj 143 32 savestate;
+#X obj 78 12 loadbang;
+#X obj 35 142 list store;
+#X msg 65 90 1;
+#X obj 78 33 t b b;
+#X obj 65 69 t b a;
+#X obj 12 116 spigot 0;
+#X obj 115 116 spigot 1;
+#X obj 143 53 t a b;
+#X msg 170 90 0;
+#X msg 115 142 64 64;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 1 1;
+#X connect 3 0 0 1;
+#X connect 4 0 6 0;
+#X connect 4 1 5 0;
+#X connect 7 0 15 0;
+#X connect 7 1 0 0;
+#X connect 8 0 11 0;
+#X connect 9 0 4 0;
+#X connect 10 0 13 1;
+#X connect 11 0 13 0;
+#X connect 11 1 14 0;
+#X connect 12 0 10 0;
+#X connect 12 1 9 1;
+#X connect 13 0 9 0;
+#X connect 14 0 17 0;
+#X connect 15 0 12 0;
+#X connect 15 1 16 0;
+#X connect 16 0 14 1;
+#X connect 17 0 4 0;
+#X restore 67 229 pd save-state;
+#N canvas 531 26 258 182 forwarding 0;
+#X obj 18 58 route CH1 CH2;
+#X obj 19 124 s \$0-mixer2-channel1-r;
+#X obj 56 92 s \$0-mixer2-channel2-r;
+#X obj 18 6 inlet;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 3 0 0 0;
+#X restore 403 47 pd forwarding;
+#X obj 348 24 inlet~ fwd;
+#X connect 0 0 17 0;
+#X connect 0 0 18 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 1;
+#X connect 6 0 7 0;
+#X connect 7 0 17 0;
+#X connect 7 0 18 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 1;
+#X connect 11 0 8 0;
+#X connect 17 0 1 0;
+#X connect 22 0 0 0;
+#X connect 22 1 21 0;
+#X coords 0 -1 1 1 175 75 2 100 100;

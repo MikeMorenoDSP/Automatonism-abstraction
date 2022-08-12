@@ -2,7 +2,7 @@
 #X obj 348 195 *~;
 #X obj 348 364 outlet~;
 #X obj 111 125 hsl 128 15 0 127 0 1 \$0-mixer2-channel1-s \$0-mixer2-channel1-r
-CH1 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
+CH1 133 7 0 10 #fcfcfc #000000 #000000 12700 1;
 #X obj 363 129 / 127;
 #X obj 363 151 pack 0 50;
 #X obj 363 173 line~;
@@ -12,7 +12,7 @@ CH1 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
 #X obj 459 147 pack 0 50;
 #X obj 459 169 line~;
 #X obj 111 140 hsl 128 15 0 127 0 1 \$0-mixer2-channel2-s \$0-mixer2-channel2-r
-CH2 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
+CH2 133 7 0 10 #fcfcfc #000000 #000000 12500 1;
 #X obj 170 113 cnv 5 5 5 empty empty MIXER 0 0 0 12 #fcfcfc #404040
 0;
 #X obj 249 166 cnv 5 5 5 empty empty UNITY 0 0 0 8 #fcfcfc #404040
@@ -21,8 +21,6 @@ CH2 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
 ;
 #X obj 103 111 cnv 5 5 5 empty empty CH1 0 0 0 8 #fcfcfc #404040 0
 ;
-#X obj 216 113 cnv 5 5 5 empty \$0-instance-num 0 0 0 0 12 #fcfcfc
-#404040 0;
 #X obj 348 332 *~ 0.5;
 #X obj 517 348 outlet~;
 #X obj 103 166 cnv 5 5 5 empty empty OUT 0 0 0 8 #fcfcfc #404040 0
@@ -78,20 +76,20 @@ CH2 133 7 0 10 #fcfcfc #000000 #000000 6400 1;
 #X connect 3 0 0 0;
 #X restore 403 47 pd forwarding;
 #X obj 348 24 inlet~ fwd;
+#X connect 0 0 16 0;
 #X connect 0 0 17 0;
-#X connect 0 0 18 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 0 1;
 #X connect 6 0 7 0;
+#X connect 7 0 16 0;
 #X connect 7 0 17 0;
-#X connect 7 0 18 0;
 #X connect 8 0 9 0;
 #X connect 9 0 10 0;
 #X connect 10 0 7 1;
 #X connect 11 0 8 0;
-#X connect 17 0 1 0;
-#X connect 22 0 0 0;
-#X connect 22 1 21 0;
+#X connect 16 0 1 0;
+#X connect 21 0 0 0;
+#X connect 21 1 20 0;
 #X coords 0 -1 1 1 175 75 2 100 100;
